@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Ritam Das | Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --background: #080808;
+      --card: #111111;
+      --card-light: #171717;
+      --text: #f5f5f5;
+      --muted: #969696;
+      --border: rgba(255, 255, 255, 0.1);
+      --accent: #ffffff;
+      --green: #8cff66;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 80% 10%, rgba(109, 255, 85, 0.09), transparent 25%),
+        radial-gradient(circle at 10% 25%, rgba(255, 255, 255, 0.05), transparent 25%),
+        var(--background);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: auto;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 22px 0;
+      background: rgba(8, 8, 8, 0.78);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .nav-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .logo span {
+      color: var(--green);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a {
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+    .hero {
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      padding: 100px 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 25px;
+    }
+
+    .tag::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 12px var(--green);
+    }
+
+    h1 {
+      max-width: 760px;
+      font-size: clamp(45px, 7vw, 86px);
+      line-height: 1.02;
+      letter-spacing: -5px;
+      margin-bottom: 25px;
+    }
+
+    h1 span {
+      color: var(--green);
+    }
+
+    .hero-text {
+      max-width: 560px;
+      color: var(--muted);
+      font-size: 17px;
+      margin-bottom: 32px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      transition: 0.3s ease;
+    }
+
+    .btn-primary {
+      color: #000;
+      background: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--green);
+      transform: translateY(-3px);
+    }
+
+    .btn-secondary {
+      color: white;
+      background: transparent;
+    }
+
+    .btn-secondary:hover {
+      background: var(--card-light);
+      transform: translateY(-3px);
+    }
+
+    .profile-box {
+      min-height: 360px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,0.08), transparent),
+        var(--card);
+      overflow: hidden;
+    }
+
+    .profile-box::before {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: var(--green);
+      filter: blur(80px);
+      opacity: 0.18;
+    }
+
+    .profile-box h2 {
+      position: relative;
+      font-size: 55px;
+      letter-spacing: -4px;
+    }
+
+    section {
+      padding: 100px 0;
+    }
+
+    .section-label {
+      color: var(--green);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 13px;
+    }
+
+    .section-title {
+      font-size: clamp(30px, 5vw, 52px);
+      letter-spacing: -2px;
+      margin-bottom: 45px;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 50px;
+    }
+
+    .about p {
+      color: var(--muted);
+      font-size: 17px;
+      margin-bottom: 18px;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-content: start;
+    }
+
+    .skill {
+      padding: 10px 15px;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      color: #ddd;
+      background: rgba(255,255,255,0.03);
+      font-size: 14px;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .project-card {
+      padding: 25px;
+      min-height: 245px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      transition: 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(140, 255, 102, 0.5);
+      background: var(--card-light);
+    }
+
+    .project-number {
+      color: var(--green);
+      font-size: 13px;
+    }
+
+    .project-card h3 {
+      font-size: 22px;
+      margin: 15px 0 8px;
+    }
+
+    .project-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .project-link {
+      margin-top: 20px;
+      color: var(--green);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .contact-box {
+      padding: 45px;
+      text-align: center;
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      background: linear-gradient(135deg, #151515, #0d0d0d);
+    }
+
+    .contact-box h2 {
+      font-size: clamp(28px, 5vw, 55px);
+      letter-spacing: -2px;
+      margin-bottom: 15px;
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      margin-bottom: 25px;
+    }
+
+    footer {
+      padding: 25px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      text-align: center;
+      font-size: 13px;
+    }
+
+    @media (max-width: 800px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 90px 0;
+      }
+
+      .hero-grid,
+      .about {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-box {
+        min-height: 260px;
+      }
+
+      .projects {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        letter-spacing: -3px;
+      }
+
+      section {
+        padding: 70px 0;
+      }
+
+      .contact-box {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="container nav-content">
+      <a href="#" class="logo">RITAM<span>DAS</span>.</a>
+
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="tag">Available for freelance work</div>
+
+          <h1>
+            Hi, I'm <span>Ritam Das</span>.<br>
+            I build digital experiences.
+          </h1>
+
+          <p class="hero-text">
+            I’m a passionate Graphic and UI/UX Designer who loves creating modern, creative, and user-friendly designs. I focus on turning ideas into visually appealing digital experiences that are both functional and engaging.
+          </p>
+
+          <div class="buttons">
+            <a href="#projects" class="btn btn-primary">View My Work</a>
+            <a href="#contact" class="btn btn-secondary">Contact Me</a>
+          </div>
+        </div>
+
+        <div class="profile-box">
+          <h2>Ritam Das</h2>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-label">01 — About me</div>
+        <h2 class="section-title">A little bit about me.</h2>
+
+        <div class="about">
+          <div>
+            <p>
+              Hello! My name is Ritam Das. I’m a passionate Graphic and UI/UX Designer who loves creating modern, creative, and user-friendly designs. I focus on turning ideas into visually appealing digital experiences that are both functional and engaging.
+            </p>
+
+            <p>
+              MI enjoy learning new technologies, solving problems, and turning creative ideas into reality.
+            </p>
+          </div>
+
+          <div class="skills">
+          	<span class="skill">Adobe Illustrator</span>
+          	<span class="skill">Photoshop</span>
+          	<span class="skill">Canva</span>
+          	<span class="skill">Figma</span>
+          	<span class="skill">CorelDRAW</span>
+            <span class="skill">HTML</span>
+            <span class="skill">CSS</span>
+            <span class="skill">php</span>
+            <span class="skill">JavaScript</span>
+            <span class="skill">UI/UX Design</span>
+            <span class="skill">MySQL Database</span>
+            <span class="skill">Responsive Design</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-label">02 — Selected work</div>
+        <h2 class="section-title">Some things I've built.</h2>
+
+        <div class="projects">
+          <div class="project-card">
+            <div>
+              <div class="project-number">01</div>
+              <h3>Portfolio Website</h3>
+              <p>
+                Ek modern personal portfolio website with responsive design.
+              </p>
+            </div>
+            <a href="#" class="project-link">View project →</a>
+          </div>
+
+         <div class="project-card">
+  <div>
+    <div class="project-number">02</div>
+    <h3>Graphic Works</h3>
+    <p>
+      A collection of my graphic design and creative works.
+    </p>
+  </div>
+
+  <a href="pdf/graphic-works.pdf"
+     target="_blank"
+     class="project-link">
+    View Project →
+  </a>
+</div>
+
+          <div class="project-card">
+            <div>
+              <div class="project-number">03</div>
+              <h3>Dashboard UI</h3>
+              <p>
+                Data visualization ke liye clean aur interactive dashboard.
+              </p>
+            </div>
+            <a href="#" class="project-link">View project →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+  <div class="container">
+    <div class="contact-box">
+      <h2>Let's work together.</h2>
+
+      <p>
+      Open to exciting projects, collaborations, and new opportunities.**
+      </p>
+
+      <div class="contact-details">
+        <a href="ritamdas58112@gmail.com">
+          📧 ritamdas58112@gmail.com
+        </a>
+
+        <a href="tel:+917364061853">
+          📞 +91 7364061853
+        </a>
+
+        <a href="https://github.com/yourusername" target="_blank">
+          💻 GitHub
+        </a>
+
+        <a href="https://www.linkedin.com/in/yourusername/" target="_blank">
+          🔗 LinkedIn
+        </a>
+
+       
+      </div> <br>
+
+      <a href="mailto:yourname@gmail.com" class="btn btn-primary">
+        Send me an email
+      </a>
+    </div>
+  </div>
+</section>
+
+
